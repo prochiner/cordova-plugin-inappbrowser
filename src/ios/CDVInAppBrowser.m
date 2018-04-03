@@ -842,13 +842,13 @@
     __weak UIViewController* weakSelf = self;
 
     // Run later to avoid the "took a long time" log message.
-    //dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         if ([weakSelf respondsToSelector:@selector(presentingViewController)]) {
             [[weakSelf presentingViewController] dismissViewControllerAnimated:YES completion:nil];
         } else {
             [[weakSelf parentViewController] dismissViewControllerAnimated:YES completion:nil];
         }
-    //});
+    });
 }
 
 - (void)navigateTo:(NSURL*)url
